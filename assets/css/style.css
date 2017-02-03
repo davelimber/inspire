@@ -1,0 +1,21 @@
+.imginfo {
+     background-size: cover;
+}
+.upperR {
+   position: absolute; 
+   top: 10px; 
+   left: 200px; 
+   width: 100%; 
+
+}
+.full {
+    background: url('http://placehold.it/1920x1080') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+body {
+    margin-top: 50px; /* Required margin for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
