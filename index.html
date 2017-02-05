@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html class="full" lang="en">
+<html lang="en">
+
 <!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
 
 <head>
@@ -13,8 +14,8 @@
     <title>Full - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
-      
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- Custom CSS -->
 
@@ -25,75 +26,79 @@
 </head>
 
 <body>
+    <!--<div id="image" class="background" v-bind:style="{'background-image': 'url(\'' + image + '\')'}"> -->
+    <div id="image"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+    <div class="container upperL" id="todo">
+        <!-- Panel for holding our input -->
+        <section class="panel">
 
-<div id="todo">
-  <input v-model="newTodo" v-on:keyup.enter="addTodo">
-  <a v-model="addTodo" v-on:click="addTodo($index)">+</a>
-  <ul>
-    <li v-for="todo in todos">
-     <a v-on:click="removeTodo($index)">-</a>
-     <span>{{ todo.text }}</span>
-    </li>  
-  </ul>
-</div>
+            <input type="checkbox" id="mark-all" v-bind:checked="areAllSelected" v-on:click="selectAll">
+            <input type="text" placeholder="What do you need to do?" autofocus class="text-input" v-model="newTask" v-on:keyup.enter="addTask">            {{ taskList.length }}
+            <button v-on:click="clearList">Clear List</button>
 
- 
+        </section>
 
-<!--JS Libraries-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+
+        <ul class="list">
+
+            <li v-for="task in taskList" v-bind:class="{done: task.checked}">
+
+                <input type="checkbox" class="checkbox" v-model="task.checked" v-on:click="addTask">
+
+                <label for="checkbox">{{ task.text }}</label>
+
+                <button class="delete" v-on:click="removeTask(task)">X</button>
+
+            </li>
+
+        </ul>
+        <!--for testing-->
+        <!--<pre>{{ $data }}</pre> -->
+    </div>
+
+    <div id="weather" class="upperR" v-on:click="toggleTemp" v-model="displayTemp">
+
+        <p>City: {{weather.name}}
+        </p>
+        <p>Current Temp {{ displayTemp }} {{ degrees }}</p>
+
+    </div>
+
+    <div id="quote" class="lowerL" v-bind:title="quote.author">
+
+        {{quote.quote}}
+
+    </div>
+
+
+
+
+
+
+
+    <!--JS Libraries-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
 
     <!-- jQuery -->
-    <!--<script src="js/jquery.js"></script>-->
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <!--<script src="js/bootstrap.min.js"></script>-->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 
-<!--Initialize App-->
-	<!--<script src="app/init.js"></script>-->
-	<script src="app/components/weather/weather-service.js"></script>
-	<script src="app/components/image/image-service.js"></script>
-	<script src="app/components/quote/quote-service.js"></script>
-	<script src="app/components/todo/todo-service.js"></script>
+    <!--Initialize App-->
+    <!--<script src="app/init.js"></script>-->
+    <script src="app/components/weather/weather-service.js"></script>
+    <!--<script src="app/components/image/image-service.js"></script>-->
+    <script src="app/components/quote/quote-service.js"></script>
+    <script src="app/components/todo/todo-service.js"></script>
 
-	<!--Load your scripts below-->
-	<script src="app/components/weather/weather-controller.js"></script>
-	<script src="app/components/image/image-controller.js"></script>
-	<script src="app/components/quote/quote-controller.js"></script>
-	<script src="app/components/todo/todo-controller.js"></script>
+    <!--Load your scripts below-->
+    <script src="app/components/weather/weather-controller.js"></script>
+    <!--<script src="app/components/image/image-controller.js"></script>-->
+    <script src="app/components/quote/quote-controller.js"></script>
+    <script src="app/components/todo/todo-controller.js"></script>
 
 </body>
 

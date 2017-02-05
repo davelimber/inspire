@@ -7,24 +7,33 @@
 
 
 	new Vue({
-		el: '#img',
+		el: '#image',
 		data: {
-			image: '',
-			style: {
-				backgroundimage: ''
-				// background: '',
-				//  'red'
-			},
-			img: ''
+			image: []
+
 		},
 		mounted: function () {
+			// imageService.getImage(this.imgSet)
 			imageService.getImage(this.imgGet)
-			console.log('started')
+		
 		},
 		methods: {
+			// imgSet: function (imageObj) {
+			// 	console.log('got this for obj looking at large url', imageObj.large_url)
+			
+			// 	this.image = JSON.parse(imageObj).large_url
+			// 	console.log('this is image now', this.image)
+			// },
 			imgGet: function (res) {
 				console.log(res)
-				this.image = JSON.parse(res).url
+				// use JSONparse if http://bcw-getter.herokuapp.com/?url= in service
+				// this.image = JSON.parse(res).url
+				this.image = res.url
+				
+				console.log('after parse ', this.image)
+				var bgImg = 'url(' + this.image + ')';
+				console.log('background image ', bgImg)
+				$('body').css({ 'background-image': bgImg, 'background-size': 'cover', });
 				console.log(this.image)
 			}
 		}
