@@ -19,7 +19,7 @@
 			},
 			methods: {
 				setWeather: function(weather){
-					console.log('this is the weather ', weather.main.temp)
+					console.log('this is the weather ', weather.temp)
 					this.weather = weather;
 					this.fahTemp = (this.weather.main.temp * 9 / 5 - 459.67).toFixed(0)
 					this.celTemp = (this.weather.main.temp - 273.15).toFixed(1)
