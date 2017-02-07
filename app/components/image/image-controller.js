@@ -27,8 +27,8 @@
 			imgGet: function (res) {
 				console.log(res)
 				// use JSONparse if http://bcw-getter.herokuapp.com/?url= in service
-				// this.image = JSON.parse(res).url
-				this.image = res.url
+				this.image = JSON.parse(res).url
+				// this.image = res.url
 				
 				console.log('after parse ', this.image)
 				var bgImg = 'url(' + this.image + ')';
