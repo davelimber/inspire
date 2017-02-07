@@ -19,8 +19,8 @@
 			},
 			methods: {
 				setWeather: function(weather){
-					console.log('this is the weather ', weather.temp)
-					this.weather = weather;
+					this.weather = JSON.parse(weather);
+					console.log('this is the weather info ', this.weather)
 					this.fahTemp = (this.weather.main.temp * 9 / 5 - 459.67).toFixed(0)
 					this.celTemp = (this.weather.main.temp - 273.15).toFixed(1)
 					this.displayTemp = this.fahTemp;
