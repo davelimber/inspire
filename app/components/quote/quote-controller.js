@@ -4,8 +4,7 @@
 
 	var qs = this;
 	var quoteService = new QuoteService();
-// var x = quoteService.getQuote()
-// console.log(x)
+
 
 		new Vue({
 			el: '#quote',
@@ -14,8 +13,6 @@
 			},
 			mounted: function(){
 				quoteService.getQuote(this.setQuote)
-				
-				// console.log(this.quote)
 			},
 			methods: {
 				setQuote: function(quote){
