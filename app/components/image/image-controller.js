@@ -33,6 +33,7 @@
 				console.log('after parse ', this.image)
 				var bgImg = 'url(' + this.image + ')';
 				console.log('background image ', bgImg)
+				//needed jquery for proper formatting of image//
 				$('body').css({ 'background-image': bgImg, 'background-size': 'cover', });
 				console.log(this.image)
 			}
